@@ -1,0 +1,103 @@
+# MICE Stock Prediction - Git Ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Data Files (too large for git)
+data/raw/**/*.csv
+data/raw/**/*.parquet
+data/raw/**/*.h5
+data/raw/**/*.hdf5
+data/processed/**/*.csv
+data/processed/**/*.parquet
+data/processed/**/*.h5
+data/splits/**/*.csv
+data/splits/**/*.parquet
+
+# Keep directory structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/splits/.gitkeep
+
+# Model Checkpoints
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+models/checkpoints/
+
+# Results (can be regenerated)
+results/figures/**/*.png
+results/figures/**/*.jpg
+results/figures/**/*.pdf
+results/tables/**/*.csv
+
+# Keep README files
+!results/figures/README.md
+!results/tables/README.md
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
