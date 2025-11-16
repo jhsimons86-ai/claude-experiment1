@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBI Feedback Coach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SBI Feedback Coach</h1>
+            <p class="subtitle">Transform your thoughts into structured, effective feedback</p>
+        </header>
+
+        <!-- Step 1: Input -->
+        <section id="input-section" class="section active">
+            <div class="card">
+                <h2>Describe Your Feedback</h2>
+                <p class="instruction">Share what happened and how you'd like to give feedback. Be as detailed or brief as you like.</p>
+                <textarea
+                    id="feedback-input"
+                    placeholder="Example: My teammate Sarah interrupted me multiple times during yesterday's client presentation. It made me feel unheard and I think it confused the client about who was leading the meeting..."
+                    rows="8"
+                ></textarea>
+                <button id="analyze-btn" class="primary-btn">
+                    <span class="btn-text">Analyze Feedback</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span> Analyzing...
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 2: Structured Fields -->
+        <section id="structure-section" class="section" style="display: none;">
+            <div class="card">
+                <h2>Structured SBI Components</h2>
+                <p class="instruction">Review and refine the extracted components:</p>
+
+                <div class="sbi-field">
+                    <label>
+                        <strong>Situation</strong>
+                        <span class="help-text">When and where did this happen?</span>
+                    </label>
+                    <textarea id="situation-field" rows="2"></textarea>
+                </div>
+
+                <div class="sbi-field">
+                    <label>
+                        <strong>Behavior</strong>
+                        <span class="help-text">What specific, observable actions occurred?</span>
+                    </label>
+                    <textarea id="behavior-field" rows="3"></textarea>
+                </div>
+
+                <div class="sbi-field">
+                    <label>
+                        <strong>Impact</strong>
+                        <span class="help-text">What was the effect or consequence?</span>
+                    </label>
+                    <textarea id="impact-field" rows="3"></textarea>
+                </div>
+
+                <!-- Sliders -->
+                <div class="controls">
+                    <div class="slider-control">
+                        <label>
+                            <strong>Tone</strong>
+                            <span class="slider-labels">
+                                <span>Direct</span>
+                                <span>Supportive</span>
+                            </span>
+                        </label>
+                        <input type="range" id="tone-slider" min="0" max="100" value="50">
+                    </div>
+
+                    <div class="slider-control">
+                        <label>
+                            <strong>Length</strong>
+                            <span class="slider-labels">
+                                <span>Concise</span>
+                                <span>Detailed</span>
+                            </span>
+                        </label>
+                        <input type="range" id="length-slider" min="0" max="100" value="50">
+                    </div>
+                </div>
+
+                <button id="generate-btn" class="primary-btn">
+                    <span class="btn-text">Generate Feedback</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span> Generating...
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 3: Final Output -->
+        <section id="output-section" class="section" style="display: none;">
+            <div class="card">
+                <h2>Your Feedback</h2>
+
+                <div class="output-box">
+                    <h3>SBI Statement</h3>
+                    <div id="sbi-output" class="output-content"></div>
+                </div>
+
+                <div class="output-box">
+                    <h3>Next Step</h3>
+                    <div id="ask-output" class="output-content"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="copy-email-btn" class="secondary-btn">
+                        📧 Copy as Email
+                    </button>
+                    <button id="copy-script-btn" class="secondary-btn">
+                        💬 Copy as 1:1 Script
+                    </button>
+                    <button id="regenerate-btn" class="tertiary-btn">
+                        🔄 Adjust & Regenerate
+                    </button>
+                    <button id="start-over-btn" class="tertiary-btn">
+                        ✨ Start Over
+                    </button>
+                </div>
+
+                <div id="copy-notification" class="notification" style="display: none;">
+                    ✓ Copied to clipboard!
+                </div>
+            </div>
+        </section>
+
+        <!-- API Key Setup -->
+        <div id="api-setup" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Claude API Key Required</h3>
+                <p>To use the SBI Feedback Coach, you need to provide your Claude API key.</p>
+                <input type="password" id="api-key-input" placeholder="Enter your Claude API key">
+                <div class="modal-buttons">
+                    <button id="save-api-key-btn" class="primary-btn">Save Key</button>
+                    <button id="cancel-api-key-btn" class="tertiary-btn">Cancel</button>
+                </div>
+                <p class="help-text">Your API key is stored locally in your browser and never sent anywhere except to Claude's API.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>SBI Framework: Situation · Behavior · Impact</p>
+            <button id="settings-btn" class="settings-btn">⚙️ API Settings</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
